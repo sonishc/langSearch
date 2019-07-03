@@ -1,0 +1,10 @@
+<table style="margin-top: 10px; border: 1px solid grey">
+  <% data.each do |lang| %>
+  <tr>
+     <td><%= lang[:text_message] %></td>
+     <td><%= lang["Name"] %></td>
+     <td><%= lang["Type"] %></td>
+     <td><%= lang["Designed by"] %></td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,17 @@
+<h1>Search Languages</h1>
+<p>Library of most popular languages</p>
+
+<p>Ex. Thomas Eugene</p>
+
+<%= form_tag("/search_languages/index", method: 'post', remote: true ) do %>
+  <input type="text" name="query" placeholder="Type your message here..." style="padding: 5px">
+  <input type="submit" value="Find language" style="padding: 5px">
+<% end %>
+
+<div>
+  <div id="languages" >
+    <%= render partial: 'shared/languages', locals: { data: @data } %>
+  </div>
+</div>
+
+
