@@ -3,9 +3,7 @@ require 'json'
 class SearchLanguagesController < ApplicationController
   def index
     languages = SearchService.new(params[:query], read_file).find
-
-    @data = languages.nil? ? [{ 'text_message': 'Empty' }] : languages
-
+    @data = languages.nil? ? [{ 'text_message': '' }] : languages
     respond_to do |format|
       format.html
       format.js

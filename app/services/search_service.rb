@@ -1,45 +1,51 @@
 class SearchService < ApplicationService
   attr_reader :query, :data
 
-  def initialize(query = '', data)
+  def initialize(query, data)
     @query = query.to_s
     @data = data
   end
 
   def find
     return nil if @query == ''
+
     search
   end
 
   private
 
   def search
-    content = @data.split("},")
-    content[0] = ''
-    content[-1] = content.last[0..-4]
-    query_validation.length.times do |index|
-      content.select! { |c| /#{query_validation[index]}/i.match?(c) }
+    content = json_to_array(@data)
+    search_words = query_validation(@query)
+    search_words.length.times do |index|
+      content.select! { |c| /#{search_words[index]}/i.match?(c) }
     end
-    result_of_search = exclude_validation(content)
-    return [{ 'text_message': 'Not found' }] if result_of_search.empty?
-    json_string = result_of_search.size > 1 ? "[" + result_of_search.join("},") + "}]" : "[" + result_of_search.join() + "}]"
-    JSON.parse(json_string)
+    json_respond(exclude_validation(@query, content))
   end
 
-  def query_validation
-    @query.split(' ')
-  end
+  def json_respond(result)
+    return [{ 'text_message': 'Not found' }] if result.empty?
 
-  def test(query, content)
-    result_of_search = []
-    query.length.times do |index|
-      content.reject! { |c| /#{query[index]}/i.match?(c) }
+    if result.size > 1
+      JSON.parse("[" + result.join("},") + "}]")
+    else
+      JSON.parse("[" + result.join() + "}]")
     end
-    content
   end
 
-  def exclude_validation(search_values)
-    words = @query.split(' ').select { |w| w[0] == '-' }
+  def json_to_array(json_file)
+    array_file = json_file.split("},")
+    array_file[0] = ''
+    array_file[-1] = array_file.last[0..-4]
+    array_file
+  end
+
+  def query_validation(query)
+    query.split(' ')
+  end
+
+  def exclude_validation(query, search_values)
+    words = query.split(' ').select { |w| w[0] == '-' }
     words = words.join(" ").gsub("-", "").split(" ")
     return search_values if words.size == 0
     words.length.times do |index|

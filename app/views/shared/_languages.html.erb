@@ -1,13 +1,17 @@
 <div class="languages">
   <% data.each do |lang| %>
-  <div class="language">
-    <div>
-      <h3><%= lang[:text_message] %></h3>
-      <h3><%= lang["Name"] %></h3>
-      <span><%= lang["Type"] %></span>
-      <h5><%= lang["Designed by"] %></h5>
+    <% if lang[:text_message].nil? || !lang[:text_message].empty? %>
+    <div class="language">
+      <div>
+        <h3><%= lang["Name"] %></h3>
+        <span><%= lang["Type"] %></span>
+        <h5><%= lang["Designed by"] %></h5>
+      </div>
+      <% unless lang[:text_message].nil? %>
+        <h3><%= lang[:text_message] %> :(</h3>
+      <% end %>
     </div>
-  </div>
+    <% end %>
   <% end %>
 </div>
 
