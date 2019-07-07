@@ -1,10 +1,13 @@
-<table style="margin-top: 10px; border: 1px solid grey">
+<div class="languages">
   <% data.each do |lang| %>
-  <tr>
-     <td><%= lang[:text_message] %></td>
-     <td><%= lang["Name"] %></td>
-     <td><%= lang["Type"] %></td>
-     <td><%= lang["Designed by"] %></td>
-  </tr>
+  <div class="language">
+    <div>
+      <h3><%= lang[:text_message] %></h3>
+      <h3><%= lang["Name"] %></h3>
+      <span><%= lang["Type"] %></span>
+      <h5><%= lang["Designed by"] %></h5>
+    </div>
+  </div>
   <% end %>
-</table>
+</div>
+

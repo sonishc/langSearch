@@ -1,3 +1,53 @@
-// Place all the styles related to the search_languages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.page-header {
+  display: flex;
+  justify-content: center;
+  margin: 5vh 0 2vh 0;
+  .title {
+    background: #000;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 15px;
+    width: 41vw;
+    .scopes {
+      display: flex;
+      width: 5vw;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+    }
+  }
+}
+.form-search {
+  display: flex;
+  justify-content: center;
+  input[type=text] {
+    width: 35vw;
+    padding: 15px 10px;
+    border-radius: 25px;
+  }
+  input[type=submit] {
+    background: white;
+    color: black;
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin: 0px 10px;
+  }
+}
+.languages {
+  display: flex;
+  margin: 20px 5vw 0 5vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  .language {
+    width: 20vw;
+    padding: 0px 10px 10px 10px;
+    margin: 5px;
+    background: #fff;
+  }
+}

@@ -1,12 +1,20 @@
-<h1>Search Languages</h1>
-<p>Library of most popular languages</p>
+<div class="page-header">
+  <div class="title">
+    <div class="scopes"><</div>
+    <div class="text-center">
+      <h1>Search Languages</h1>
+      <h2>Library of most popular languages</h2>
+    </div>
+    <div class="scopes">></div>
+  </div>
+</div>
 
-<p>Ex. Thomas Eugene</p>
-
-<%= form_tag("/search_languages/index", method: 'post', remote: true ) do %>
-  <input type="text" name="query" placeholder="Type your message here..." style="padding: 5px">
-  <input type="submit" value="Find language" style="padding: 5px">
-<% end %>
+<div class="form-search">
+  <%= form_tag("/search_languages/index", method: 'post', remote: true ) do %>
+    <input type="text" name="query" placeholder="Type your message here...">
+    <input type="submit" value="GO">
+  <% end %>
+</div>
 
 <div>
   <div id="languages" >
