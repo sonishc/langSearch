@@ -1,5 +1,6 @@
-require 'json'
+# frozen_string_literal: true
 
+# SearchLanguagesController
 class SearchLanguagesController < ApplicationController
   def index
     languages = SearchService.new(params[:query], read_file).find
@@ -13,6 +14,6 @@ class SearchLanguagesController < ApplicationController
   private
 
   def read_file
-    File.read(File.join(File.expand_path(Rails.root), "/public/data.json"))
+    File.read(File.join(File.expand_path(Rails.root), '/public/data.json'))
   end
 end
