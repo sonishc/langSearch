@@ -1,24 +1,26 @@
-# README
+## LangSearch
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Search programming languages by input values. Application presents a list of popular programming languages
 
-Things you may want to cover:
+> JSON file used as database
+> Ruby version 2.5.5
+> Rails version 5.2.3
 
-* Ruby version
+### How to start?
+  `git clone or download`
 
-* System dependencies
+  `cd langSearch`
 
-* Configuration
+  `rails s`
 
-* Database creation
+ Type your text into input field and press `GO` to get the result of searched languages
 
-* Database initialization
+### Simple examples:
 
-* How to run the test suite
+  * input value `Thomas` return `BASIC` and `HASKELL`
 
-* Services (job queues, cache servers, search engines, etc.)
+  * input value `Thomas Eugen` return `BASIC`
 
-* Deployment instructions
+  * input value `Thomas Eugen -basic` return `Not found :(`
 
-* ...
+  * input value `Thomas -basic` return `HASKELL`
